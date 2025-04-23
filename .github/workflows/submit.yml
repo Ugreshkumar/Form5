@@ -1,0 +1,29 @@
+name: Save Form Entry + Photo
+on:
+  repository_dispatch:
+    types: [new_form_entry]
+
+jobs:
+  save:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 'फ़ोटो फ़ाइल बनाएं'
+        run: |
+          mkdir -p "$(dirname "${{ github.event.client_payload.photoPath }}")"
+          echo "${{ github.event.client_payload.photoData }}" | base64 -d > "${{ github.event.client_payload.photoPath }}"
+
+      - name: 'CSV में पंक्ति जोड़ें'
+        run: |
+          echo "${{ github.event.client_payload.ts }},\"${{ github.event.client_payload.name }}\",\"${{ github.event.client_payload.email }}\",\"${{ github.event.client_payload.comment }}\",\"${{ github.event.client_payload.photoPath }}\"" >> data/data.csv
+
+      - name: 'कमिट व पुश'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "data: नया रिकॉर्ड व फ़ोटो जोड़ी गई"
+          file_pattern: |
+            data/data.csv
+            ${{ github.event.client_payload.photoPath }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
