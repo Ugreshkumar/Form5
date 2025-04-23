@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <title>डेटा एंट्री फ़ॉर्म</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@^3/dist/tailwind.min.css">
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+  <form id="entryForm" class="bg-white p-6 rounded-xl shadow w-full max-w-sm space-y-4">
+    <h1 class="text-xl font-semibold text-center">रिकॉर्ड जोड़ें</h1>
+
+    <label class="block">
+      <span class="text-sm">नाम</span>
+      <input name="name" required class="mt-1 w-full border px-2 py-1 rounded" />
+    </label>
+
+    <label class="block">
+      <span class="text-sm">ई‑मेल</span>
+      <input type="email" name="email" required class="mt-1 w-full border px-2 py-1 rounded" />
+    </label>
+
+    <label class="block">
+      <span class="text-sm">टिप्पणी</span>
+      <textarea name="comment" rows="3" required class="mt-1 w-full border px-2 py-1 rounded"></textarea>
+    </label>
+
+    <label class="block">
+      <span class="text-sm">फ़ोटो (JPG/PNG ≤ 5 MB)</span>
+      <input type="file" name="photo" accept="image/*" required
+             class="mt-1 w-full border px-2 py-1 rounded" />
+    </label>
+
+    <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded">
+      सबमिट करें
+    </button>
+
+    <p id="msg" class="text-center text-sm"></p>
+  </form>
+
+  <script src="app.js"></script>
+</body>
+  </html>
