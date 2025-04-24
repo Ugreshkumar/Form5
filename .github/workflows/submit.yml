@@ -26,4 +26,4 @@ jobs:
             data/data.csv
             ${{ github.event.client_payload.photoPath }}
         env:
-          GITHUB_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
+          GITHUB_TOKEN: ${{ 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 }}
