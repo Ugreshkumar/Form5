@@ -45,7 +45,7 @@ form.addEventListener('submit', async (e)=>{
       headers:{
         'Accept':'application/vnd.github+json',
         'Content-Type':'application/json',
-        'Authorization':'Bearer ghp_<PUBLIC_TRIGGER_TOKEN>'
+        'Authorization':'Bearer ghp_<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>'
       },
       body:JSON.stringify({
         event_type:'new_form_entry',
